@@ -9,7 +9,7 @@ int main() {
     User* user1 = new User("user1", "JohnDoe", "password123");
     manager.register_user(user1);
 
-    Task* task1 = new Task("TASK_001", "user1", "Finish homework", "Complete the assignment", "2025-03-01", "Study", 2, 0);
+    Task* task1 = new Task(1, 1, "Finish homework", "Complete the assignment", "2025-03-01", "Study",  Priority::MID, Status::NOT_STARTED);
     manager.add_task(task1);
 
     if (manager.login("user1", "password123")) {
