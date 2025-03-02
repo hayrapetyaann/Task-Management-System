@@ -1,7 +1,7 @@
 #include "Task.h"
 #include <iostream>
 
-Task::Task(std::string task_id, std::string uid, std::string title, std::string description, std::string deadline,
+Task::Task(int task_id, int uid, std::string title, std::string description, std::string deadline,
            std::string category, int prio, int status)
     : m_task_id(task_id), m_uid(uid), m_title(title), m_description(description), m_deadline(deadline),
       m_category(category), m_prio(prio), m_status(status) {}
@@ -68,7 +68,7 @@ void Task::display_info() const {
               << ", Category: " << m_category << ", Priority: " << m_prio << ", Status: " << m_status << std::endl;
 }
 
-std::string Task::get_task_id() const {
+int Task::get_task_id() const {
     return m_task_id;
 }
 
@@ -126,7 +126,7 @@ std::ostream& operator<<(std::ostream& os, const Task& task) {
 }
 
 std::istream& operator>>(std::istream& is, Task& task) {
-    std::getline(is, task.m_task_id);
+    is >> task.m_task_id;
     std::getline(is, task.m_title);
     std::getline(is, task.m_description);
     std::getline(is, task.m_deadline);
