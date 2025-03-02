@@ -13,7 +13,16 @@ Task::Task(const Task& other)
 Task::Task(Task&& other) noexcept
     : m_task_id(std::move(other.m_task_id)), m_uid(std::move(other.m_uid)), m_title(std::move(other.m_title)),
       m_description(std::move(other.m_description)), m_deadline(std::move(other.m_deadline)),
-      m_category(std::move(other.m_category)), m_prio(other.m_prio), m_status(other.m_status) {}
+      m_category(std::move(other.m_category)), m_prio(other.m_prio), m_status(other.m_status) {
+        other.m_task_id = 0;
+        other.m_uid = 0;
+        other.m_prio = Priority::LOW;
+        other.m_status = Status::NOT_STARTED;
+        other.m_title.clear();
+        other.m_description.clear();
+        other.m_deadline.clear();
+        other.m_category.clear();
+      }
 
 Task::~Task() {}
 
@@ -42,6 +51,16 @@ Task& Task::operator=(Task&& other) noexcept {
         m_category = std::move(other.m_category);
         m_prio = other.m_prio;
         m_status = other.m_status;
+
+        other.m_task_id = 0;
+        other.m_uid = 0;
+        other.m_prio = Priority::LOW;
+        other.m_status = Status::NOT_STARTED;
+        other.m_title.clear();
+        other.m_description.clear();
+        other.m_deadline.clear();
+        other.m_category.clear();
+
     }
     return *this;
 }
@@ -135,6 +154,6 @@ std::istream& operator>>(std::istream& is, Task& task) {
 
     task.m_prio = static_cast<Priority>(prio);
     task.m_status = static_cast<Status>(status);
-    
+
     return is;
 }
