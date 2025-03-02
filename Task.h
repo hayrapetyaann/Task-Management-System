@@ -9,8 +9,8 @@ enum class Status { NOT_STARTED, IN_PROGRESS, COMPLETED };
 
 class Task {
 private:
-    std::string m_task_id;
-    std::string m_uid;
+    int m_task_id;
+    int m_uid;
     std::string m_title;
     std::string m_description;
     std::string m_deadline;
@@ -19,7 +19,7 @@ private:
     int m_status;
 
 public:
-    Task(std::string task_id, std::string uid, std::string title, std::string description, std::string deadline,
+    Task(int task_id, int uid, std::string title, std::string description, std::string deadline,
          std::string category, int prio, int status);
     Task(const Task& other);
     Task(Task&& other) noexcept;
@@ -32,7 +32,7 @@ public:
     void set_status(Status status);
     void set_prio(Priority prio);
     void display_info() const;
-    std::string get_task_id() const;
+    int get_task_id() const;
 
     Task& operator++();
     Task operator++(int);
