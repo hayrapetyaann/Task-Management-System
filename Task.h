@@ -15,12 +15,12 @@ private:
     std::string m_description;
     std::string m_deadline;
     std::string m_category;
-    int m_prio;
-    int m_status;
+    Priority m_prio;
+    Status m_status;
 
 public:
     Task(int task_id, int uid, std::string title, std::string description, std::string deadline,
-         std::string category, int prio, int status);
+         std::string category, Priority prio, Status status);
     Task(const Task& other);
     Task(Task&& other) noexcept;
     ~Task();
